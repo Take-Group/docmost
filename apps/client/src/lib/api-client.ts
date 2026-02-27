@@ -7,6 +7,14 @@ const api: AxiosInstance = axios.create({
   withCredentials: true,
 });
 
+// FormData must NOT have Content-Type set manually - browser/axios sets it with boundary
+api.interceptors.request.use((config) => {
+  if (config.data instanceof FormData && config.headers) {
+    delete config.headers["Content-Type"];
+  }
+  return config;
+});
+
 api.interceptors.response.use(
   (response) => {
     // we need the response headers for these endpoints

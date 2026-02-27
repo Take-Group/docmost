@@ -130,11 +130,7 @@ export async function importPage(file: File, spaceId: string) {
   formData.append("spaceId", spaceId);
   formData.append("file", file);
 
-  const req = await api.post<IPage>("/pages/import", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  const req = await api.post<IPage>("/pages/import", formData);
 
   return req.data;
 }
@@ -149,11 +145,7 @@ export async function importZip(
   formData.append("source", source);
   formData.append("file", file);
 
-  const req = await api.post<any>("/pages/import-zip", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  const req = await api.post<any>("/pages/import-zip", formData);
 
   return req.data;
 }
