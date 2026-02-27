@@ -45,7 +45,7 @@ RUN pnpm install --frozen-lockfile --prod
 
 RUN mkdir -p /app/data/storage
 
-VOLUME ["/app/data/storage"]
+# VOLUME not used on Railway (use Railway volumes in dashboard if persistence needed)
 
 EXPOSE 3000
 
